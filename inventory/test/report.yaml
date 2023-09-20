@@ -1,0 +1,145 @@
+devices:
+  switch2:
+    "show lldp neighbors":
+      lldpNeighbors: []
+      tablesAgeOuts: 0
+      tablesDeletes: 0
+      tablesDrops: 0
+      tablesInserts: 0
+    "show ip interface brief":
+      interfaces:
+        Ethernet1:
+          interfaceAddress:
+            ipAddr:
+              address: 192.168.5.111
+              maskLen: 23
+          interfaceStatus: connected
+          ipv4Routable0: false
+          ipv4Routable240: false
+          lineProtocolStatus: up
+          mtu: 1500
+          name: Ethernet1
+          nonRoutableClassEIntf: false
+        Ethernet3:
+          interfaceAddress:
+            ipAddr:
+              address: 172.25.10.2
+              maskLen: 24
+          interfaceStatus: disabled
+          ipv4Routable0: false
+          ipv4Routable240: false
+          lineProtocolStatus: down
+          mtu: 1500
+          name: Ethernet3
+          nonRoutableClassEIntf: false
+        Management1:
+          interfaceAddress:
+            ipAddr:
+              address: 0.0.0.0
+              maskLen: 0
+          interfaceStatus: connected
+          ipv4Routable0: false
+          ipv4Routable240: false
+          lineProtocolStatus: up
+          mtu: 1500
+          name: Management1
+          nonRoutableClassEIntf: false
+    "show interfaces description":
+      interfaceDescriptions:
+        Ethernet1:
+          description: ''
+          interfaceStatus: up
+          lineProtocolStatus: up
+        Ethernet2:
+          description: ''
+          interfaceStatus: up
+          lineProtocolStatus: up
+        Ethernet3:
+          description: ''
+          interfaceStatus: adminDown
+          lineProtocolStatus: down
+        Management1:
+          description: ''
+          interfaceStatus: up
+          lineProtocolStatus: up
+    "show version":
+      architecture: i686
+      bootupTimestamp: 1694537967.3187158
+      configMacAddress: 00:00:00:00:00:00
+      hardwareRevision: ''
+      hwMacAddress: 00:00:00:00:00:00
+      imageFormatVersion: '1.0'
+      imageOptimization: None
+      internalBuildId: 90401380-ca95-4956-a605-ecece601c8f9
+      internalVersion: 4.30.2F-33092737.4302F
+      isIntlVersion: false
+      memFree: 980716
+      memTotal: 1988144
+      mfgName: Arista
+      modelName: vEOS-lab
+      serialNumber: AF12C3928ADAE3CBBBDB9D2A365FB1CB
+      systemMacAddress: 52:54:00:2a:40:b0
+      uptime: 688194.18
+      version: 4.30.2F
+    "show running-config":
+      cmds:
+        hostname AristaSwitch: null
+        interface Ethernet1:
+          cmds:
+            ip address 192.168.5.111/23: null
+            no switchport: null
+          comments: []
+        interface Ethernet2:
+          cmds:
+            switchport access vlan 10: null
+          comments: []
+        interface Ethernet3:
+          cmds:
+            ip address 172.25.10.2/24: null
+            ip ospf area 0.0.0.10: null
+            no switchport: null
+            shutdown: null
+          comments: []
+        interface Management1:
+          cmds: {}
+          comments: []
+        ip name-server vrf default 192.168.5.77: null
+        ip name-server vrf default 192.168.5.83: null
+        ip ospf router-id output-format hostnames: null
+        ip route 0.0.0.0/0 192.168.4.1: null
+        ip routing: null
+        management api http-commands:
+          cmds:
+            no shutdown: null
+          comments: []
+        no aaa root: null
+        ntp server 8.8.8.8: null
+        router ospf 1:
+          cmds:
+            max-lsa 12000: null
+            network 172.18.0.0/16 area 0.0.0.20: null
+            network 172.25.0.0/16 area 0.0.0.10: null
+            network 192.168.0.0/16 area 0.0.0.0: null
+            router-id 2.2.2.2: null
+          comments: []
+        service routing protocols model multi-agent: null
+        snmp-server community READ ro: null
+        snmp-server community WRITE rw: null
+        spanning-tree mode mstp: null
+        system l1:
+          cmds:
+            unsupported error-correction action error: null
+            unsupported speed action error: null
+          comments: []
+        transceiver qsfp default-mode 4x10G: null
+        ? username ansible privilege 15 secret sha512 $6$RvCYdz6zhW5Y2p92$aF1anCcLmr5Yxr2WXQ.BOjLfwfhPbATBWnXSfkyplyzxVBnLSstwDTdsIgiLOEYpowQvaR.LHx.QOTLirvFLl.
+        : null
+        ? username arista privilege 15 secret sha512 $6$7InD1b5jdB2ic/KO$EOEmwHcZIC7BULcM6P3hJl2H1A4QcimBB6hzL2360wYToN.NtVAwblcnPtRMtcO/Ygx8Fz6ffRuBqyxVYLlQV.
+        : null
+        vlan 10:
+          cmds: {}
+          comments: []
+      comments: []
+      header:
+      - '! device: AristaSwitch (vEOS-lab, EOS-4.30.2F)'
+      - '! boot system flash:/vEOS-lab.swi'

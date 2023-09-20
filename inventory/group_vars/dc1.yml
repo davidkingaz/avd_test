@@ -1,0 +1,19 @@
+ansible_user: 'ansible'
+ansible_password: 'ansible'
+ansible_network_os: eos
+ansible_become: true
+ansible_become_method: enable
+ansible_connection: ansible.netcommon.network_cli
+
+output_format:
+ - text
+ - markdown
+ # - json
+ - yaml
+
+commands_to_collect:
+ - show lldp neighbors
+ - show ip interface brief
+ - show interfaces description
+ - show version
+ - show running-config

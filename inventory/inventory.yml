@@ -1,0 +1,11 @@
+---
+all:
+  children:
+    DC1:
+      children:
+        DC1_FABRIC:
+          children:
+            DC1_SPINES:
+              hosts:
+                switch2:
+                  ansible_host: 192.168.5.111

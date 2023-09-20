@@ -1,0 +1,63 @@
+! Command: show running-config
+! device: AristaSwitch (vEOS-lab, EOS-4.30.2F)
+!
+! boot system flash:/vEOS-lab.swi
+!
+no aaa root
+!
+username ansible privilege 15 secret sha512 $6$RvCYdz6zhW5Y2p92$aF1anCcLmr5Yxr2WXQ.BOjLfwfhPbATBWnXSfkyplyzxVBnLSstwDTdsIgiLOEYpowQvaR.LHx.QOTLirvFLl.
+username arista privilege 15 secret sha512 $6$7InD1b5jdB2ic/KO$EOEmwHcZIC7BULcM6P3hJl2H1A4QcimBB6hzL2360wYToN.NtVAwblcnPtRMtcO/Ygx8Fz6ffRuBqyxVYLlQV.
+!
+transceiver qsfp default-mode 4x10G
+!
+service routing protocols model multi-agent
+!
+hostname AristaSwitch
+ip name-server vrf default 192.168.5.77
+ip name-server vrf default 192.168.5.83
+!
+snmp-server community READ ro
+snmp-server community WRITE rw
+!
+spanning-tree mode mstp
+!
+system l1
+   unsupported speed action error
+   unsupported error-correction action error
+!
+vlan 10
+!
+management api http-commands
+   no shutdown
+!
+interface Ethernet1
+   no switchport
+   ip address 192.168.5.111/23
+!
+interface Ethernet2
+   switchport access vlan 10
+!
+interface Ethernet3
+   shutdown
+   no switchport
+   ip address 172.25.10.2/24
+   ip ospf area 0.0.0.10
+!
+interface Management1
+!
+ip routing
+!
+ip route 0.0.0.0/0 192.168.4.1
+!
+ntp server 8.8.8.8
+!
+router ospf 1
+   router-id 2.2.2.2
+   network 172.18.0.0/16 area 0.0.0.20
+   network 172.25.0.0/16 area 0.0.0.10
+   network 192.168.0.0/16 area 0.0.0.0
+   max-lsa 12000
+!
+ip ospf router-id output-format hostnames
+!
+end

@@ -1,0 +1,5 @@
+Interface                      Status         Protocol           Description
+Et1                            up             up                 
+Et2                            up             up                 
+Et3                            admin down     down               
+Ma1                            up             up
